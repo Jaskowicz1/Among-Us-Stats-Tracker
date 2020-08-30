@@ -1,17 +1,20 @@
-import time
 
+# Imports
+import time
 import cv2
 import mss
 import numpy
 import pytesseract
 
+# Path for tesseract
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
+# Variables
 wins = 0
 loses = 0
-
 hasRead = False
 
+# Load the data for wins.txt and lose.txt
 with open("wins.txt", "r") as file:
     data = file.read().replace('\n', '')
 
@@ -25,21 +28,21 @@ with open("lose.txt", "r") as file:
     dataSplit = data.split(": ")
     if(len(dataSplit) > 1):
         loses = int(dataSplit[1])
-    
 
+# State how many wins and losses they have.
 print("Win file has " + str(wins) + " wins")
 print("Lose file has " + str(loses) + " loses")
 
-mon = {'top': 105, 'left': 575, 'width': 800, 'height': 200}
+# Get the position on the monitor
+mon = {'top': 105, 'left': 575, 'width': 800, 'height': 250}
 
 with mss.mss() as sct:
     while True:
         im = numpy.asarray(sct.grab(mon))
-        # im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 
         text = pytesseract.image_to_string(im)
 
-
+        # Using 'in' here because text likes to have a box in every string.
         if "Victory" in text:
             if hasRead == False:
                 wins += 1
@@ -64,5 +67,5 @@ with mss.mss() as sct:
             cv2.destroyAllWindows()
             break
 
-        # One screenshot per second
+        # Wait .75 seconds.
         time.sleep(0.75)
