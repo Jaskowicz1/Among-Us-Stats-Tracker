@@ -11,12 +11,10 @@ Tested and programmed in Python 3.7.
 
 - Python
 - cv2 (pip install cv2)
-- mss
-- numpy
-- pytesseract
+- mss (pip install mss)
+- numpy (pip install numpy)
 - tesseract (https://github.com/UB-Mannheim/tesseract/wiki)
-
-(chat and console messages can be the same but may cause conflict).
+- pytesseract (pip install pytesseract, pip install tesseract) (RUN THIS AFTER INSTALLING `tesseract` ABOVE)
 
 
 ---
