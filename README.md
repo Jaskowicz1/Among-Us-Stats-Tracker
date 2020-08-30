@@ -26,6 +26,8 @@ When you have all the requirements installed, run the python script "Main.py". T
 
 It's advised to wait until the counter increases before hitting "Play Again" otherwise your stats may not change.
 
+You can press "q" to quit the program.
+
 
 ---
 
